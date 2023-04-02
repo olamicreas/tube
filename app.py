@@ -58,7 +58,7 @@ def t():
             download_path = YouTube(d).streams.get_highest_resolution().download()
             
             fname = download_path.split("//")[-1]
-            flash("Downloading....", 'success')    
+               
             return send_file(fname, as_attachment=True)
                         
 
