@@ -55,12 +55,19 @@ def t():
     if request.method == 'POST':
         try:
             
-            download_path = YouTube(d).streams.get_highest_resolution().download()
+           """ download_path = YouTube(d, use_oauth = True).streams.get_highest_resolution().download()
             
-            fname = download_path.split("//")[-1]
-               
-            return send_file(fname, as_attachment=True)
-                        
+            fname = download_path.split("//")[-1]"""
+
+            ydl = youtube_dl.YoutubeDL({'format': 'bestvideo', 'outtmpl': 'youtube/%(extractor_key)s/%(extractor)s-%(id)s-%(title)s.%(ext)s'})
+    
+            with ydl:
+              
+                #r = ydl.download([d])
+                r = ydl.extract_info(d, download=True)
+                fname = ydl.prepare_filename(r)
+                
+           return send_file(fname, as_attachment=True)        
 
             
             
