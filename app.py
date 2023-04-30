@@ -17,6 +17,7 @@ import time
 import json
 import pickle
 import requests
+import yt_dlp as youtube_dl
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 app = Flask(__name__)
@@ -57,13 +58,19 @@ def t():
 
             
             
-            download_path = YouTube(d, use_oauth = True, allow_oauth_cache=True).streams.get_highest_resolution().download()
+            #download_path = YouTube(d, use_oauth = True, allow_oauth_cache=True).streams.get_highest_resolution().download()
             
-            fname = download_path.split("//")[-1]
-
+            #fname = download_path.split("//")[-1]
+            with youtube_dl.YoutubeDL() as ydl:
+              
+                #r = ydl.download([d])
+                r = ydl.extract_info(d, download=True)
+               
+               
+                return send_file(fname, as_attachment=True)
            
                                                    
-            return send_file(fname, as_attachment=True)        
+            #return send_file(fname, as_attachment=True)        
 
             
             
