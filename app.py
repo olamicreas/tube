@@ -57,7 +57,7 @@ def t():
 
             
             
-            download_path = YouTube(d, use_oauth = True).streams.get_highest_resolution().download()
+            download_path = YouTube(d, use_oauth = True, allow_oauth_cache=True).streams.get_highest_resolution().download()
             
             fname = download_path.split("//")[-1]
 
