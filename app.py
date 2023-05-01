@@ -66,7 +66,7 @@ def t():
               
                 #r = ydl.download([d])
                 r = ydl.extract_info(d, download=True)
-               
+                fname = ydl.prepare_filename(r)
                
                 return send_file(fname, as_attachment=True)
            
