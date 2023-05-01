@@ -92,6 +92,15 @@ def terms():
 @app.route('/about')
 def about():
     return render_template('about.html')
+ 
+ @app.route('/contact', methods=['POST', 'GET'])
+def con():
+   
+    if request.method == 'POST':
+        flash('SENT', 'success')
+
+    return render_template('contact.html')
+
 
 
 
