@@ -67,7 +67,7 @@ def t():
                 'key': 'FFmpegVideoConvertor',
                 'preferedformat': 'mp4'
              }]}
-            with youtube_dl.YoutubeDL() as ydl:
+            with youtube_dl.YoutubeDL(opt) as ydl:
               
                 #r = ydl.download([d])
                 r = ydl.extract_info(d, download=True)
