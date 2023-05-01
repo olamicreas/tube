@@ -91,9 +91,9 @@ def terms():
 
 @app.route('/about')
 def about():
-    return render_template('about.html')
+ return render_template('about.html')
  
- @app.route('/contact', methods=['POST', 'GET'])
+@app.route('/contact', methods=['POST', 'GET'])
 def con():
    
     if request.method == 'POST':
