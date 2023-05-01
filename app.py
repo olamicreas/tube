@@ -81,7 +81,7 @@ def t():
             print(e)
         
     
-    return render_template('tube.html', title='Tube Downloader')
+    return render_template('tube.html', title='Video Downloader')
 @app.route('/privacy')
 def privacy():
     return render_template('privacy.html', title='privacy')
@@ -100,7 +100,7 @@ def con():
     if request.method == 'POST':
         flash('SENT', 'success')
 
-    return render_template('contact.html')
+    return render_template('contact.html', title='contact us')
 
 
 
