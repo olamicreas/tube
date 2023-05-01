@@ -17,7 +17,26 @@
 
   </head>
   <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg" style="background-color: #08003a;">
+    
+    
+  </header>
+  <body>
+    <div class="container-fluid">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick=delete_flash(this)>
+              <span aria-hidden="true">&times;</span>
+            </button>
+            {{message}}
+            </div>
+
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+    </div>
+      <nav class="navbar navbar-expand-lg navbar-dark bg" style="background-color: #08003a;">
       <a class="navbar-brand" href="{{ url_for('t')}}">Tube Downloader</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"   aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -36,23 +55,6 @@
         
       </div>
     </nav>
-  </header>
-  <body>
-    <div class="container-fluid">
-    {% with messages = get_flashed_messages(with_categories=true) %}
-    {% if messages %}
-        {% for category, message in messages %}
-            <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick=delete_flash(this)>
-              <span aria-hidden="true">&times;</span>
-            </button>
-            {{message}}
-            </div>
-
-          {% endfor %}
-        {% endif %}
-      {% endwith %}
-    </div>
     <div id="load" style="display: none;" class="text-center"><img src="{{url_for('static', filename='Skinny.gif')}}" width=4% height=1%></div>
 
     {% block content %}
