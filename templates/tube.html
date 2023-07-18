@@ -129,7 +129,8 @@
       
       <form method="POST" enctype="multipart/form-data" class="text-center">
        
-        <div style="margin-top: 5%;">  
+        <div style="margin-top: 5%;">
+          <h1 class="mb-3 mt-3 main_title" style="color: whitesmoke;">Youtube</h1>
           <h1 class="mb-3 mt-3 main_title" style="color: whitesmoke;">Video Downloader</h1>
           <br>
           <input type=text  name="d" placeholder="Paste Your video link here" class="input">
@@ -141,7 +142,7 @@
 
     </section>
     <section class="container text-center mt-5 mb-5">
-        <p class="mute">This Vidsaver video downloader allows you to download videos from tiktok, facebook, twitter and youtube only, with just one click!</p>
+        <p class="mute">This Vidsaver video downloader allows you to download videos from tiktok, facebook and youtube only, with just one click!</p>
         <h5 class="mute">Supported Platforms:</h5>
         <div class="row mt-3 justify-content-center" style="padding: 15px;">
           <div class="col-6 col-sm-2 p-4"><img src="/static/windows.svg" class='fil'></div>
@@ -212,13 +213,13 @@
               <ul>
              
               <li>
-                Facebook Video Downloader
+                <a href="{{url_for('fb')}}">Facebook Video Downloader</a>
               </li>
               <li>
-                Twitter Video Downloader
+                <a href="{{url_for('tube')}}">Youtube</a>
               </li>
               <li>
-                TikTok Video Downloader
+                <a href="{{url_for('tk')}}">TikTok Video Downloader</a>
               </li>
               </ul>
             </div>
