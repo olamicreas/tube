@@ -81,7 +81,7 @@ def t():
             print(e)
         
     
-    return render_template('tube.html', title='Video Downloader')
+    return render_template('tube.html', title='Youtube Video Downloader')
 @app.route('/privacy')
 def privacy():
     return render_template('privacy.html', title='privacy')
@@ -101,6 +101,75 @@ def con():
         flash('SENT', 'success')
 
     return render_template('contact.html', title='contact us')
+
+@app.route('/tk', methods=['POST', 'GET'])
+def tk():
+    
+    form = Track(request.form)
+    d = request.form.get('d')
+    
+    if request.method == 'POST':
+        try:
+
+            
+            
+            #download_path = YouTube(d, use_oauth = True, allow_oauth_cache=True).streams.get_highest_resolution().download()
+            
+            #fname = download_path.split("//")[-1]
+            opt = {'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4'}
+            with youtube_dl.YoutubeDL(opt) as ydl:
+              
+                #r = ydl.download([d])
+                r = ydl.extract_info(d, download=True)
+                fname = ydl.prepare_filename(r)
+               
+                return send_file(fname, as_attachment=True)
+           
+                                                   
+            #return send_file(fname, as_attachment=True)        
+
+            
+            
+        except Exception as e:
+            flash("Error Downloading", 'danger')
+            print(e)
+        
+    
+    return render_template('tiktok.html', title='TikTok Downloader')
+@app.route('/fb', methods=['POST', 'GET'])
+def fb():
+    
+    form = Track(request.form)
+    d = request.form.get('d')
+    
+    if request.method == 'POST':
+        try:
+
+            
+            
+            #download_path = YouTube(d, use_oauth = True, allow_oauth_cache=True).streams.get_highest_resolution().download()
+            
+            #fname = download_path.split("//")[-1]
+            opt = {'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/mp4'}
+            with youtube_dl.YoutubeDL(opt) as ydl:
+              
+                #r = ydl.download([d])
+                r = ydl.extract_info(d, download=True)
+                fname = ydl.prepare_filename(r)
+               
+                return send_file(fname, as_attachment=True)
+           
+                                                   
+            #return send_file(fname, as_attachment=True)        
+
+            
+            
+        except Exception as e:
+            flash("Error Downloading", 'danger')
+            print(e)
+        
+    
+    return render_template('facebook.html', title='Facebook Downloader')
 
 
 
